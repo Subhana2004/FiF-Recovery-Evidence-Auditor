@@ -15,3 +15,4 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m unittest discover -s tests -v
       - run: python -m examples.demo
+      - run: python validate_trace_pair.py examples/SYNTHETIC_details_1.json examples/SYNTHETIC_run.jsonl

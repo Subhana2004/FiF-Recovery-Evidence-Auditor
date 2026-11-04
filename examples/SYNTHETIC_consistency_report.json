@@ -1,0 +1,32 @@
+{
+  "verification_type": "FiF saved-output cross-check; not an authenticity certificate",
+  "detail_file": "examples/SYNTHETIC_details_1.json",
+  "result_file": "examples/SYNTHETIC_run.jsonl",
+  "checks": {
+    "memory_tool_usage_present": true,
+    "unique_matching_qid": true,
+    "same_final_component_sequence": true,
+    "same_final_component_set": true,
+    "same_agent_usage": true
+  },
+  "warnings": [],
+  "authentic_fif_execution_verified": false,
+  "detail_sha256": "32436ceaba528636e86599888e1321ef8fa98f8e5d7bd519adb97954de98cfef",
+  "result_sha256": "6b15e15598714a93ac9c1e36273c41664a39041de7f26e906b83341bfcf3d3b0",
+  "qid": "q-one",
+  "retrieval_attempts": 1,
+  "review_flags": [],
+  "matching_jsonl_records": 1,
+  "invalid_jsonl_lines": [],
+  "detail_final_component_count": 2,
+  "jsonl_final_component_count": 2,
+  "upstream_jsonl_llm_calls": 1,
+  "upstream_jsonl_api_usage": {},
+  "internal_consistency_passed": true,
+  "limitations": [
+    "This compares stored outputs and does not prove either came from an actual FiF execution.",
+    "The two files may have been modified; record paths and SHA-256 hashes for provenance.",
+    "Passing checks does not validate retrieval relevance, scientific results, or algorithm correctness.",
+    "Upstream results may be appended/re-run and contain duplicate qids; resolve duplicates manually."
+  ]
+}

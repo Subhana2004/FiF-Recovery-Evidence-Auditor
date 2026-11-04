@@ -1,0 +1,1 @@
+{"qid": "q-one", "retrieved_units": [{"nodes": [["docA", "1"]], "edges": [], "score": 1.0, "type": "node"}, {"nodes": [["docB", "2"]], "edges": [], "score": 2.0, "type": "node"}], "agent_usage": {"orchestrator": {"llm_calls": 1}}, "llm_calls": 1, "api_usage": {}}

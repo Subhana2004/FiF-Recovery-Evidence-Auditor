@@ -12,12 +12,15 @@ Python 3.10+ standard library; no installation, API key, GPU, or model training.
 python fif_recovery_auditor.py /path/to/run/details
 python fif_recovery_auditor.py /path/to/run --json-out report.json --csv-out steps.csv
 python fif_recovery_auditor.py /path/to/run/details/0.json
+python validate_trace_pair.py /path/to/run/details/0.json /path/to/run/run_name.jsonl --report pair_report.json
 
 python -m unittest discover -s tests -v
 python -m examples.demo
 ```
 
 `path` can be a detail JSON, its `details/` folder, or the run parent containing `details/`. Reports must be saved outside the input details directory and never modify input traces. JSON includes query strings and component IDs from inputs; keep reports private if those fields are sensitive. CSV has one row per serialized step. The CLI returns 2 if any supplied file fails to parse, and 0 otherwise. A review flag by itself is **not** a failing scientific verdict.
+
+`validate_trace_pair.py` is an optional read-only check for one detail JSON and its companion run JSONL. It compares the unique `qid`, ordered final IDs, and copied `agent_usage`, and records SHA-256 hashes. Exit status is 0 for internal consistency, 1 for a mismatch, and 2 for malformed input. A pass cannot authenticate the files or prove FiF retrieval quality. Its `--report` path must differ from both input paths.
 
 ## Synthetic demonstration
 
@@ -29,6 +32,14 @@ python -m examples.demo
 | changed | 1 | 1 | No repeated-only flag |
 
 The demo asserts these differences and equal recorded usage. **These are synthetic fixture values, not FiF experiment outcomes.**
+
+The paired-output fixture is also explicitly synthetic:
+
+```bash
+python validate_trace_pair.py examples/SYNTHETIC_details_1.json examples/SYNTHETIC_run.jsonl
+```
+
+An illustrative report is in `examples/SYNTHETIC_consistency_report.json`; the actual CLI prints absolute paths in your checkout. See [PHASE6_STATUS.md](PHASE6_STATUS.md) for the real-run feasibility gate and [VALIDATION.md](VALIDATION.md) for source parity.
 
 ## Interpretation
 
